@@ -1,0 +1,83 @@
+.glow-effect {
+  --glow-line-color: #fff;
+  --glow-line-thickness: 1.5px;
+  --glow-blur-color: #ffde59;
+  --glow-blur-size: 3px;
+  /* para calcular */
+  --container-offset: 63px;
+  position: relative;
+}
+
+.glow-container {
+  position: absolute;
+  /*outline: 2px solid white;*/
+  width: calc(100% + var(--container-offset));
+  height: calc(100% + var(--container-offset));
+  inset: calc(var(--container-offset) / -2);
+}
+
+.glow-blur,
+.glow-line {
+  width: calc(100% - var(--container-offset));
+  height: calc(100% - var(--container-offset));
+  x: 30;
+  y: 32;
+  rx: 0.27 rem;
+  fill: transparent;
+
+  stroke-width: 30px;
+  stroke-dasharray: 5 12;
+  transition: stroke-dashoffset 1000ms;
+}
+
+.glow-effect .glow-blur,
+.glow-effect .glow-line {
+  stroke-dashoffset: -2 0px;
+}
+
+.glow-line {
+  stroke: var(--glow-line-color);
+  stroke-width: var(--glow-line-thickness);
+  animation: glow-visibility 5000ms;
+}
+
+.glow-blur {
+  filter: blur(var(--glow-blur-size));
+  stroke: var(--glow-blur-color);
+  stroke-width: var(--glow-blur-size);
+}
+
+.glow-effect .glow-blur,
+.glow-effect .glow-line {
+  animation: glow-animation 9.5s infinite linear;
+}
+
+@keyframes glow-animation {
+  0% {
+    stroke-dashoffset: 0;
+  }
+  12.5% {
+    stroke-dashoffset: -15;
+  }
+  25% {
+    stroke-dashoffset: -30;
+  }
+  37.5% {
+    stroke-dashoffset: -45;
+  }
+  50% {
+    stroke-dashoffset: -60;
+  }
+  62.5% {
+    stroke-dashoffset: -45;
+  }
+  75% {
+    stroke-dashoffset: -30;
+  }
+  87.5% {
+    stroke-dashoffset: -15;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}

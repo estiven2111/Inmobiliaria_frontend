@@ -1,0 +1,1 @@
+export const estados = [{name:"En estudio",value:"En estudio"}, {name:"Aprobado",value:"Aprobado"}, {name: "Pendiente por CoA",value:"Pendiente por CoA"}, {name:"No aprobado" ,value:"No aprobado"}];
